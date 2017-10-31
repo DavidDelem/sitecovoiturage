@@ -1,0 +1,21 @@
+// Place all the styles related to the Trajets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-date {
+  select {
+    display: inline-block;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    height: calc(2.25rem + 2px);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+  }
+}
