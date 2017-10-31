@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  horaire_depart: MyString
+  ville_depart: MyString
+  ville_destination: MyString
+  nb_places_totales: 1
+
+two:
+  horaire_depart: MyString
+  ville_depart: MyString
+  ville_destination: MyString
+  nb_places_totales: 1
