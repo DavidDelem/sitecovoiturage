@@ -1,11 +1,31 @@
-<% if member_signed_in? %>
-
-    <h3>you have succesfully signed in</h3>
-    <%= link_to "Sign Out", destroy_member_session_path, :method => :delete %>
-
-<% else %>
-
-    <h1> welcom to rails community</h1>
-
-
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <h1>TravelExpress</h1>
+    </div>
+    <div class="col-lg-12">
+      <h2>Trouver un covoiturage</h2>
+    </div>
+    <div class="col-lg-12">
+    <%= form_with scope: :trajet, url: trajets_path, local: true do |form| %>
+          <div class="row justify-content-center">
+        <div class="col-lg-4">
+          <div class="form-group field">
+            <%= form.text_field :ville_depart, placeholder: "Ville de départ", :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col-lg-4 .offset-md-1">
+          <div class="form-group field">
+            <%= form.text_field :ville_destination, placeholder: "Ville de destination", :class => 'form-control' %>
+          </div>
+        </div>
+            <div class="col-lg-3">
+              <div class="actions bouton-recherche">
+                <%= form.submit 'Rechercher', :class => 'btn btn-primary' %>
+              </div>
+            </div>
+          </div>
+    <% end %>
+    </div>
+  </div>
+</div>

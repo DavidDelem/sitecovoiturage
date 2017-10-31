@@ -8,7 +8,6 @@
     <ul class="nav navbar-nav ml-auto justify-content-end">
       <% if member_signed_in? %>
       <li class="nav-item">
-        <%= # link_to "current_member_show", current_member, :method => :get, :class => 'nav-link' %>
         <%= link_to "Déconnexion", destroy_member_session_path, :method => :delete, :class => 'nav-link' %>
       </li>
       <% else %>
