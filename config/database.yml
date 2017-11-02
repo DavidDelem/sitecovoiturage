@@ -17,7 +17,7 @@ development:
   <<: *default
   database: covoiturage
   username: root
-  password:
+  password: football
 #  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
