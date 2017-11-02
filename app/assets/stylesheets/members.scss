@@ -1,3 +1,42 @@
 // Place all the styles related to the Members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profil-container {
+
+  padding-top: 50px;
+  color: #383838;
+
+  h1 {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 3.5em;
+  }
+  .presentation {
+    margin-top: 25px;
+    font-family: 'Roboto';
+    font-weight: 400;
+  }
+}
+
+.profil-picture-container {
+
+  text-align: center;
+
+  .profil-picture {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius:50%;
+    position: relative;
+    display: inline-block;
+
+    img {
+      max-width: 200%;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%)
+    }
+  }
+}

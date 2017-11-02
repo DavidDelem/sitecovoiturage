@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027005520) do
+ActiveRecord::Schema.define(version: 20171102015602) do
 
   create_table "covoiturages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.datetime "created_at", null: false
@@ -36,12 +36,17 @@ ActiveRecord::Schema.define(version: 20171027005520) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.string "nom"
+    t.string "prenom"
+    t.string "presentation"
+    t.string "vehicule_type"
+    t.string "vehicule_annee"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
   create_table "trajets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "horaire_depart"
+    t.datetime "horaire_depart"
     t.string "ville_depart"
     t.string "ville_destination"
     t.integer "nb_places_totales"
