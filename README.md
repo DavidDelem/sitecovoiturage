@@ -22,3 +22,16 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+```
+bundle install
+rails db:create
+rails db:migrate
+```
+
+If you have an error with bcrypt
+```
+gem uninstall bcrypt
+gem uninstall bcrypt-ruby
+gem install bcrypt --platform=ruby
+```
