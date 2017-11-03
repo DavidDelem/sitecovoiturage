@@ -27,13 +27,13 @@ test:
   <<: *default
   database: covoiturage
   username: root
-  password:
+  password: football
 #  database: db/test.sqlite3
 
 production:
   <<: *default
   database: covoiturage
   username: root
-  password:
+  password: football
 #  database: db/production.sqlite3
 
