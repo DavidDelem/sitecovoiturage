@@ -1,0 +1,25 @@
+<h1>Lister tous les trajets </h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @trajet.each do |trajet| %>
+      <tr>
+        <td><%= trajet.ville_depart %></td>
+        <td><%= trajet.ville_destination %></td>
+      </tr>
+  <% end %>
+</table>
+
+
+
+<%= form_tag("/search", method: "get") do %>
+    <%= label_tag(:ville_depart, "Ville de départ:") %>
+    <%= text_field_tag(:ville_depart) %>
+    <%= label_tag(:ville_destination, "Ville de destination:") %>
+    <%= text_field_tag(:ville_destination) %>
+    <%= submit_tag("Rechercher") %>
+<% end %>
