@@ -3,7 +3,7 @@
     <div class="col-sm-6">
       <h2>Proposer un nouveau trajet</h2>
 
-      <%= form_with scope: :trajet, url: trajets_path, local: true do |form| %>
+      <%= form_with scope: :trajet, url: member_trajets_path, local: true do |form| %>
           <div class="form-group field">
             <%= form.label :ville_depart, 'Ville de départ' %><br>
             <%= form.text_field :ville_depart, :class => 'form-control' %>

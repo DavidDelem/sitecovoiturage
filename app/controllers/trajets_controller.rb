@@ -1,5 +1,9 @@
 class TrajetsController < ApplicationController
 
+  def index
+    @trajets = Trajet.all
+  end
+
   def show
     @trajet = Trajet.find(params[:id])
   end
@@ -11,7 +15,7 @@ class TrajetsController < ApplicationController
      @trajet = Trajet.new(params.require(:trajet).permit(:horaire_depart, :ville_depart, :ville_destination, :nb_places_totales))
      @trajet.member_id = current_member.id
      @trajet.save
-     redirect_to @trajet
+     redirect_to member_trajet_path(current_member.id, @trajet.id)
   end
 
 

@@ -10,8 +10,8 @@
             <h2>Informations</h2>
             <p><span>Age:</span> 21 ans</p>
             <p><span>Ville:</span> Chicoutimi</p>
-            <p><span>Véhicule:</span> Mazda 6</p>
-            <p><span>Année:</span> 2004</p>
+            <p><span>Véhicule:</span> <%= @member.vehicule_type %></p>
+            <p><span>Année:</span> <%= @member.vehicule_annee %></p>
           </div>
           <div class="profil-conf-container">
             <% if current_member != nil && @member.id == current_member.id %>
@@ -22,12 +22,9 @@
           </div>
         </div>
         <div class="col-lg-8">
-          <h1>Barack Obama</h1>
+          <h1><%= @member.prenom %> <%= @member.nom %></h1>
           <div class="presentation">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+            <p><%= @member.presentation %></p>
           </div>
           <div class="statistiques">
             <p>15 covoiturages depuis le 12/01/2015</p>
