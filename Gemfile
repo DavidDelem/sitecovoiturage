@@ -34,6 +34,19 @@ gem 'devise'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', platforms: :ruby
 
+# boostrap
+gem 'bootstrap', '~> 4.0.0.beta2'
+gem 'autoprefixer-rails'
+gem 'bootstrap-datepicker-rails'
+
+
+#jquery
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+#popper
+gem 'popper_js', '~> 1.12.3'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
