@@ -10,6 +10,9 @@
       <tr>
         <td><%= trajet.ville_depart %></td>
         <td><%= trajet.ville_destination %></td>
+        <td><%= trajet.horaire_depart %></td>
+        <td><%= link_to 'Détails du trajet', member_trajet_path(trajet.member_id,trajet) %></td>
+
       </tr>
   <% end %>
 </table>
@@ -21,5 +24,9 @@
     <%= text_field_tag(:ville_depart) %>
     <%= label_tag(:ville_destination, "Ville de destination:") %>
     <%= text_field_tag(:ville_destination) %>
+    <%= label_tag(:horaire_depart, "Horaire de départ:") %>
+    <input data-provide='datepicker'name="horaire_depart" >
+
+
     <%= submit_tag("Rechercher") %>
 <% end %>
