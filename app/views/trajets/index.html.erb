@@ -1,14 +1,24 @@
-<h1>Listing articles</h1>
+<div class="container container-padding-top">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="title-section">Voyageur</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
-
-  <% @trajets.each do |trajet| %>
-      <tr>
-        <td><%= trajet.ville_destination %></td>
-      </tr>
-  <% end %>
-</table>
+      <p>Vous n'avez actuellement pas de trajet à venir</p>
+    </div>
+    <div class="col-lg-12">
+      <h1 class="title-section">Conducteur</h1>
+      <div class="row">
+        <% @trajets.each do |trajet| %>
+            <div class="col-lg-6">
+              <div class="trajet-elem">
+                <h2>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></h2>
+                <p>Date</p>
+                <p>X sur <%= trajet.nb_places_totales %> places réservées</p>
+                <p><%= link_to "Détails du trajet", [current_member, trajet] %></p>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

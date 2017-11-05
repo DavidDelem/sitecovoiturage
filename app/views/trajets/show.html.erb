@@ -1,6 +1,31 @@
-<p>
-  <strong>Trajet</strong>
-  <%= @trajet.horaire_depart %>
-  <%= @trajet.ville_depart %>
-  <%= @trajet.ville_destination %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Trajet de <%= @trajet.ville_depart %> à <%= @trajet.ville_destination %></h1>
+      <span>Date et heure de départ: <%= @trajet.horaire_depart %></span>
+    </div>
+    <div class="col-sm-6">
+      <h2>Informations</h2>
+      <p>Bagages autorisés:</p>
+      <p>Modéle du véhicule: <%= current_member.vehicule_type %>
+      <p>Année du véhicule: <%= current_member.vehicule_annee %></p>
+    </div>
+    <div class="col-sm-6">
+        <p>GOOGLE MAPS</p>
+    </div>
+    <div class="col-lg-12">
+        <p>Nombre de places totales: 5</p>
+        <p>Nombre de places restantes: 3</p>
+        <p>Réserver</p>
+    </div>
+  </div>
+</div>
+
+<p>Nombre de places totales, nombre de places restantes, conducteur (et lien vers son profil)</p>
+<% if current_member != nil && @trajet.member_id != current_member.id %>
+  <p>Reserver 1 ou plusieurs places</p>
+<% end %>
+<% if current_member != nil && @trajet.member_id == current_member.id %>
+  <p>Supprimer le trajet</p>
+<% end %>
+<%= link_to "Retour à la liste des trajets", :back %>

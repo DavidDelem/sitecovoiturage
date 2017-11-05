@@ -19,3 +19,17 @@
 
   }
 }
+
+.trajet-elem {
+  border: 1px solid #dce0e0;
+  margin-bottom: 25px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  padding: 20px;
+
+  &:hover {
+    transition: all 0.2s ease;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.06);
+  }
+}

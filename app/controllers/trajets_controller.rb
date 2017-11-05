@@ -1,7 +1,7 @@
 class TrajetsController < ApplicationController
 
   def index
-    @trajets = Trajet.all
+    @trajets = Trajet.where("member_id = ?", current_member.id)
   end
 
   def show
