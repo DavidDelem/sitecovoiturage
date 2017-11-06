@@ -13,6 +13,13 @@ body { padding-top: 80px; }
   }
 }
 
+.btn-recherche-trajet {
+  text-align: center;
+  .btn {
+    padding: 20px 50px 20px 50px;
+  }
+}
+
 .navbar-site {
   background: #fafafa;
   color: rgb(72, 72, 72);

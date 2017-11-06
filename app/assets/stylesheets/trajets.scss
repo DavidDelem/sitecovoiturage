@@ -1,5 +1,5 @@
 // Place all the styles related to the Trajets controller here.
-// They will automatically be included in application.scss.
+// They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .form-date {
@@ -32,4 +32,31 @@
     transition: all 0.2s ease;
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.06);
   }
+}
+
+.section-reservation {
+  border: 1px solid #dce0e0;
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.section-reservation .btn {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.section-informations i {
+  min-width: 25px;
+}
+
+.btn-nouveau-trajet {
+  margin-left: 35px;
+  margin-top: -17px;
+}
+
+.btn-nouveau-trajet, .title-inline {
+  display: inline-block;
 }

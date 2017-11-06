@@ -13,6 +13,10 @@
  */
 @import "bootstrap";
 @import "bootstrap-datepicker";
+@import "home.scss";
+@import "members.scss";
+@import "search.scss";
+@import "trajets.scss";
 
 .boutons-formulaire {
     padding-top: 10px;

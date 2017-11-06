@@ -1,3 +1,15 @@
 // Place all the styles related to the Search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-recherche {
+  .actions {
+    padding-top: 40px;
+    .btn {
+      width: 100%;
+      cursor: pointer;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+}

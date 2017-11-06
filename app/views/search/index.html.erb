@@ -1,32 +1,35 @@
-<h1>Lister tous les trajets </h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
-
-  <% @trajet.each do |trajet| %>
-      <tr>
-        <td><%= trajet.ville_depart %></td>
-        <td><%= trajet.ville_destination %></td>
-        <td><%= trajet.horaire_depart %></td>
-        <td><%= link_to 'Détails du trajet', member_trajet_path(trajet.member_id,trajet) %></td>
-
-      </tr>
-  <% end %>
-</table>
-
-
-
-<%= form_tag("/search", method: "get") do %>
-    <%= label_tag(:ville_depart, "Ville de départ:") %>
-    <%= text_field_tag(:ville_depart) %>
-    <%= label_tag(:ville_destination, "Ville de destination:") %>
-    <%= text_field_tag(:ville_destination) %>
-    <%= label_tag(:horaire_depart, "Horaire de départ:") %>
-    <input data-provide='datepicker'name="horaire_depart" >
-
-
-    <%= submit_tag("Rechercher") %>
-<% end %>
+<div class="container container-padding-top">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="form-recherche">
+        <h1 class="title-section">Recherche</h1>
+        <%= form_tag("/search", method: "get") do %>
+            <div class="form-group field">
+              <%= label_tag(:ville_depart, "Ville de départ") %>
+              <%= text_field_tag :ville_depart, @ville_depart, class: 'form-control' %>
+            </div>
+            <div class="form-group field">
+              <%= label_tag(:ville_destination, "Ville de destination") %>
+              <%= text_field_tag :ville_destination, @ville_destination, class: 'form-control' %>
+            </div>
+            <%= label_tag(:horaire_depart, "Date") %>
+            <input data-provide='datepicker'name="horaire_depart" class="form-control">
+            <div class="actions">
+              <%= submit_tag("Rechercher", :class => "btn btn-primary") %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-8 offset-md-1">
+      <h1 class="title-section">Trajets correspondants</h1>
+      <% @trajet.each do |trajet| %>
+          <div class="trajet-elem">
+            <%= trajet.ville_depart %>
+            <%= trajet.ville_destination %>
+            <%= trajet.horaire_depart %>
+            <%= link_to 'Détails du trajet', member_trajet_path(trajet.member_id,trajet) %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

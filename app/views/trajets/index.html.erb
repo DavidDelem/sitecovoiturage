@@ -6,14 +6,21 @@
       <p>Vous n'avez actuellement pas de trajet à venir</p>
     </div>
     <div class="col-lg-12">
-      <h1 class="title-section">Conducteur</h1>
       <div class="row">
+        <div class="col-lg-12">
+          <h1 class="title-section title-inline">Conducteur</h1>
+          <%= link_to 'Proposer un nouveau trajet', new_member_trajet_path(current_member), :class => 'btn btn-primary btn-nouveau-trajet' %>
+        </div>
+        <div class="col-lg-12">
+          <span>Trajets à venir</span>
+          <span>Trajets précédents</span>
+        </div>
         <% @trajets.each do |trajet| %>
             <div class="col-lg-6">
               <div class="trajet-elem">
                 <h2>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></h2>
-                <p>Date</p>
-                <p>X sur <%= trajet.nb_places_totales %> places réservées</p>
+                <p><i class="fa fa-calendar"></i>Date</p>
+                <p><i class="fa fa-circle"></i> <%= trajet.nb_places_reservees %> places réservées sur <%= trajet.nb_places_totales %></p>
                 <p><%= link_to "Détails du trajet", [current_member, trajet] %></p>
               </div>
             </div>

@@ -1,30 +1,45 @@
-<div class="container">
+<div class="container container-padding-top">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Trajet de <%= @trajet.ville_depart %> à <%= @trajet.ville_destination %></h1>
-      <span>Date et heure de départ: <%= @trajet.horaire_depart %></span>
+      <h1 class="title-section">Trajet de <%= @trajet.ville_depart %> à <%= @trajet.ville_destination %></h1>
     </div>
     <div class="col-sm-6">
-      <h2>Informations</h2>
-      <p>Bagages autorisés:</p>
-      <p>Modéle du véhicule: <%= current_member.vehicule_type %>
-      <p>Année du véhicule: <%= current_member.vehicule_annee %></p>
+      <div class="row section-informations">
+        <div class="col-lg-6">
+          <p><i class="fa fa-calendar"></i>  <%= @trajet.horaire_depart %></p>
+        </div>
+        <div class="col-lg-6">
+          <p><i class="fa fa-car"></i> <%= @member.vehicule_type %> <%= @member.vehicule_annee %></p>
+        </div>
+        <div class="col-lg-6">
+          <p><i class="fa fa-male"></i>  <%= @trajet.nb_places_totales%> places</p>
+        </div>
+        <div class="col-lg-6">
+          <p><i class="fa fa-suitcase"></i> Petite valise</p>
+        </div>
+        <div class="col-lg-6">
+          <p><i class="fa fa-paw"></i> Animeaux refusés</p>
+        </div>
+        <div class="col-lg-6">
+          <p><i class="fa fa-thermometer-half"></i> Air climatisé</p>
+        </div>
+      </div>
     </div>
     <div class="col-sm-6">
-        <p>GOOGLE MAPS</p>
-    </div>
-    <div class="col-lg-12">
-        <p>Nombre de places totales: 5</p>
-        <p>Nombre de places restantes: 3</p>
-        <p>Réserver</p>
+      <div class="section-reservation">
+        <% if current_member != nil && @trajet.member_id != current_member.id %>
+        <h2>$5 CAD par voyageur</h2>
+            Trajet proposé par  <%= @member.prenom %> <%= @member.nom %>
+            <%= link_to "Voir son profil", member_path(@member), target: :_blank %>
+            <div>
+              <button class="btn btn-primary">Réserver</button>
+            </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<p>Nombre de places totales, nombre de places restantes, conducteur (et lien vers son profil)</p>
-<% if current_member != nil && @trajet.member_id != current_member.id %>
-  <p>Reserver 1 ou plusieurs places</p>
-<% end %>
 <% if current_member != nil && @trajet.member_id == current_member.id %>
   <p>Supprimer le trajet</p>
 <% end %>
