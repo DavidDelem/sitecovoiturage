@@ -1,16 +1,18 @@
 class TrajetsController < ApplicationController
 
   def index
-    # ne récupérer que les futurs trajets
-    @trajets = Trajet.where("member_id = ?", current_member.id).order("created_at DESC")
 
-    @trajets.each do |trajet|
+    # Récupération des trajets CONDUCTEUR
+
+    @trajetsConducteur = Trajet.where("member_id = ?", current_member.id).order("created_at DESC")
+
+    @trajetsConducteur.each do |trajet|
       trajet.class_eval do
         attr_accessor :nb_places_reservees
       end
     end
 
-    @trajets.each do |trajet|
+    @trajetsConducteur.each do |trajet|
       nbPassagers = 0
       @covoiturages = Covoiturage.where("trajet_id = ?", trajet.id)
 

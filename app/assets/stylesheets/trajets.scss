@@ -54,9 +54,14 @@
 
 .btn-nouveau-trajet {
   margin-left: 35px;
-  margin-top: -17px;
+  margin-top: 10px;
+  float: right;
 }
 
 .btn-nouveau-trajet, .title-inline {
   display: inline-block;
+}
+
+.margin-top {
+  margin-top: 50px;
 }

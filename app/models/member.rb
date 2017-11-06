@@ -7,5 +7,5 @@ class Member < ApplicationRecord
   has_many :trajets
   # Lien covoiturage -> member
   has_many :covoiturages
-  has_many :trajets, through: :covoiturages
+  has_many :trajets_passager, through: :covoiturages, source: :trajet
 end

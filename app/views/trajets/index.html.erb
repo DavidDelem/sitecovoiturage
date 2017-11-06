@@ -1,11 +1,25 @@
+<% if member_signed_in? %>
 <div class="container container-padding-top">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="title-section">Voyageur</h1>
-
-      <p>Vous n'avez actuellement pas de trajet à venir</p>
+      <h1 class="title-section title-inline">Voyageur</h1>
+      <%= link_to 'Rechercher un covoiturage', search_index_path, :class => 'btn btn-primary btn-nouveau-trajet' %>
     </div>
-    <div class="col-lg-12">
+      <% if !current_member.trajets_passager.empty? %>
+        <% current_member.trajets_passager.each do |trajet| %>
+            <div class="col-lg-6">
+              <div class="trajet-elem">
+                <h2>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></h2>
+                <p><i class="fa fa-calendar"></i>Date</p>
+                <p><i class="fa fa-circle"></i>J'ai réservé X places</p>
+                <p><%= link_to "Détails du trajet", [current_member, trajet] %></p>
+              </div>
+            </div>
+        <% end %>
+    <% else %>
+        <div class="col-lg-12"><p>Vous n'avez aucun covoiturage à venir en tant que passager</p></div>
+    <% end %>
+    <div class="col-lg-12 margin-top">
       <div class="row">
         <div class="col-lg-12">
           <h1 class="title-section title-inline">Conducteur</h1>
@@ -15,17 +29,23 @@
           <span>Trajets à venir</span>
           <span>Trajets précédents</span>
         </div>
-        <% @trajets.each do |trajet| %>
-            <div class="col-lg-6">
-              <div class="trajet-elem">
-                <h2>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></h2>
-                <p><i class="fa fa-calendar"></i>Date</p>
-                <p><i class="fa fa-circle"></i> <%= trajet.nb_places_reservees %> places réservées sur <%= trajet.nb_places_totales %></p>
-                <p><%= link_to "Détails du trajet", [current_member, trajet] %></p>
+
+        <% if !current_member.trajets_passager.empty? %>
+          <% @trajetsConducteur.each do |trajet| %>
+              <div class="col-lg-6">
+                <div class="trajet-elem">
+                  <h2>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></h2>
+                  <p><i class="fa fa-calendar"></i>Date</p>
+                  <p><i class="fa fa-circle"></i> <%= trajet.nb_places_reservees %> places réservées sur <%= trajet.nb_places_totales %></p>
+                  <p><%= link_to "Détails du trajet", [current_member, trajet] %></p>
+                </div>
               </div>
-            </div>
+          <% end %>
+        <% else %>
+          <div class="col-lg-12"><p>Vous n'avez aucun covoiturage à venir en tant que conducteur</p></div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+<% end %>
