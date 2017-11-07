@@ -4,4 +4,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+  def preferences
+    @member = Member.find(params[:member_id])
+  end
 end

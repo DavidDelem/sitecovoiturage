@@ -4,6 +4,9 @@
       <div class="form-recherche">
         <h1 class="title-section">Recherche</h1>
         <%= form_tag("/search", method: "get") do %>
+
+
+
             <div class="form-group field">
               <%= label_tag(:ville_depart, "Ville de départ") %>
               <%= text_field_tag :ville_depart, @ville_depart, class: 'form-control' %>
@@ -13,7 +16,7 @@
               <%= text_field_tag :ville_destination, @ville_destination, class: 'form-control' %>
             </div>
             <%= label_tag(:horaire_depart, "Date") %>
-            <input data-provide='datepicker'name="horaire_depart" class="form-control">
+            <input id="datepicker" data-provide='datepicker'name="horaire_depart" class="form-control">
             <div class="actions">
               <%= submit_tag("Rechercher", :class => "btn btn-primary") %>
             </div>

@@ -37,8 +37,9 @@ gem 'bcrypt', platforms: :ruby
 # boostrap
 gem 'bootstrap', '~> 4.0.0.beta2'
 gem 'autoprefixer-rails'
-gem 'bootstrap-datepicker-rails'
 
+#datetimepicker
+gem 'momentjs-rails', '>= 2.9.0'
 
 #jquery
 gem 'jquery-rails'

@@ -18,7 +18,5 @@
 //= require popper
 //= require bootstrap
 //= require jquery-ui
-//= require bootstrap-datepicker
+//= require moment
 
-
-$('.datepicker').datepicker();

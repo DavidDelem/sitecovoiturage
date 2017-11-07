@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171102015602) do
   end
 
   create_table "trajets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "horaire_depart"
+    t.string "horaire_depart"
     t.string "ville_depart"
     t.string "ville_destination"
     t.integer "nb_places_totales"
