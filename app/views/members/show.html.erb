@@ -16,13 +16,13 @@
           <div class="profil-conf-container">
             <% if current_member != nil && @member.id == current_member.id %>
                 <h2>Configuration</h2>
-                <p><%= link_to "Mettre à jours mon profil", edit_member_registration_path %></p>
-                <p><%= link_to "Supprimer mon compte", edit_member_registration_path %></p>
+                <p><%= link_to "Mettre à jours mon profil", edit_member_registration_path, class: 'btn btn-primary' %></p>
+                <p><%= link_to "Supprimer mon compte", edit_member_registration_path, class: 'btn btn-danger' %></p>
             <% end %>
           </div>
         </div>
         <div class="col-lg-8">
-          <h1><%= @member.prenom %> <%= @member.nom %></h1>
+          <h1 class="title-section"><%= @member.prenom %> <%= @member.nom %></h1>
           <div class="presentation">
             <p><%= @member.presentation %></p>
           </div>

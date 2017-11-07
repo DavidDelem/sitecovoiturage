@@ -16,7 +16,6 @@
     border-radius: .25rem;
     height: calc(2.25rem + 2px);
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-
   }
 }
 
@@ -34,18 +33,22 @@
   }
 }
 
-.section-reservation {
+.section-reservation, .section-conducteur {
   border: 1px solid #dce0e0;
   border-radius: 3px;
   padding: 20px;
 }
 
-.section-reservation .btn {
+.section-reservation .btn, .section-conducteur .btn {
   width: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
   cursor: pointer;
   margin-top: 10px;
+}
+
+.section-conducteur {
+  margin-top: 25px;
 }
 
 .section-informations i {
@@ -74,4 +77,16 @@
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.field-nb-places {
+  text-align: center;
+}
+
+.field-nb-places select {
+  width: 60px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 25px;
 }

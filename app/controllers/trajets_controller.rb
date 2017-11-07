@@ -39,7 +39,15 @@ class TrajetsController < ApplicationController
 
   def show
     @trajet = Trajet.find(params[:id])
-    @member = Member.find(@trajet.member_id)
+    @member = Member.find(@trajet.member_id) # innutile, utiliser current_member
+
+    nbPlacesReservees = 0
+    @covoiturages = Covoiturage.where("trajet_id = ?", @trajet.id)
+    @covoiturages.each do |covoiturage|
+      nbPlacesReservees += covoiturage.nb_places
+    end
+
+    @nbPlacesRestantes = @trajet.nb_places_totales - nbPlacesReservees
   end
 
   def new
@@ -56,8 +64,7 @@ class TrajetsController < ApplicationController
   def destroy
     @trajet = Trajet.find(params[:id])
     @trajet.destroy
-
-    redirect_to articles_path
+    redirect_to member_trajets_path
   end
 
   def reservation

@@ -7,25 +7,16 @@
   padding-top: 50px;
   color: #383838;
 
-  h1 {
-    font-family: Roboto;
-    font-weight: 400;
-    font-size: 3.5em;
-  }
-  .presentation {
-    margin-top: 25px;
-    font-family: 'Roboto';
-    font-weight: 400;
-  }
 }
 
 .profil-picture-container {
-
+  position: absolute;
   text-align: center;
+  right: calc(50% - 50px);
 
   .profil-picture {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     overflow: hidden;
     border-radius:50%;
     position: relative;
@@ -38,5 +29,29 @@
       left:50%;
       transform: translate(-50%,-50%)
     }
+  }
+}
+
+.profil-details-container, .profil-conf-container {
+  border: 1px solid #dce0e0;
+  border-radius: 3px;
+  padding: 20px;
+  margin-top: 70px;
+
+  h2 {
+    margin-top: 25px;
+  }
+}
+
+.profil-conf-container {
+  margin-top: 40px;
+
+  h2 {
+    margin-top: 0px;
+    margin-bottom: 25px;
+  }
+
+  .btn {
+    width: 100%;
   }
 }
