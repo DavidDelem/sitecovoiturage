@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102015602) do
+ActiveRecord::Schema.define(version: 20171107014218) do
 
   create_table "covoiturages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -41,18 +41,24 @@ ActiveRecord::Schema.define(version: 20171102015602) do
     t.string "presentation"
     t.string "vehicule_type"
     t.string "vehicule_annee"
+    t.integer "preference_discussion"
+    t.integer "preference_cigarette"
+    t.integer "preference_animaux"
+    t.integer "preference_musique"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
   create_table "trajets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "horaire_depart"
+    t.datetime "horaire_depart", null: false
     t.string "ville_depart"
     t.string "ville_destination"
     t.integer "nb_places_totales"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "member_id"
+    t.float "prix", limit: 24
+    t.integer "dimension_valise"
     t.index ["member_id"], name: "fk_rails_e340330d09"
   end
 
