@@ -45,7 +45,7 @@
   padding-top: 15px;
   padding-bottom: 15px;
   cursor: pointer;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .section-informations i {
@@ -64,4 +64,14 @@
 
 .margin-top {
   margin-top: 50px;
+}
+
+.field-invisible {
+  display: none;
+}
+
+.paiement-methods {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

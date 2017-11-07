@@ -1,0 +1,10 @@
+<% if current_member != nil && @trajet.member_id != current_member.id %>
+    <div class="container container-padding-top">
+      <div class="row">
+        <div class="col-lg-6 offset-md-3">
+          <h1 class="title-section">Trajet réservé !</h1>
+          <%= link_to "Accéder à la liste de mes trajets", member_trajets_path(current_member), :method => :get %>
+        </div>
+      </div>
+    </div>
+<% end %>
