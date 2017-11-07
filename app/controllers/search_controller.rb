@@ -2,20 +2,22 @@ class SearchController < ApplicationController
 
   def index
 
-    @ville_depart = params[:ville_depart];
-    @ville_destination = params[:ville_destination];
-    @horaire_depart = params[:horaire_depart];
+    @ville_depart = params[:ville_depart]
+    @ville_destination = params[:ville_destination]
+    @year_depart = params[:year]
+    @month_depart = params[:month]
+    @day_depart = params[:day]
 
-    if(params.has_key?(:ville_depart) && params.has_key?(:ville_destination)) then
-      if(params.has_key?(:horaire_depart)) then
-        @trajet = Trajet.where("ville_depart = ? AND ville_destination = ? AND horaire_depart >= ?", params[:ville_depart], params[:ville_destination], params[:horaire_depart])
-      else
-        @trajet = Trajet.where("ville_depart = ? AND ville_destination = ?", params[:ville_depart], params[:ville_destination])
+    if(params[:ville_depart].present? && params[:ville_destination].present?) then
 
-      end
+      date_depart = DateTime.new(params["year"].to_i, params["month"].to_i, params["day"].to_i, 0 ,0 ,0)
+      puts date_depart
+      @trajet = Trajet.where("ville_depart = ? AND ville_destination = ? AND horaire_depart >= ?", params[:ville_depart], params[:ville_destination], date_depart)
     else
       @trajet = Trajet.all
     end
   end
+
+  private
 
 end
