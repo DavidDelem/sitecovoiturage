@@ -15,41 +15,68 @@
           <p><i class="fa fa-male"></i>  <%= @trajet.nb_places_totales%> places</p>
         </div>
         <div class="col-lg-6">
-          <p><i class="fa fa-suitcase"></i> Petite valise</p>
+          <p><i class="fa fa-suitcase"></i> Texte valise</p>
         </div>
         <div class="col-lg-6">
           <p><i class="fa fa-paw"></i> Animeaux refusés</p>
         </div>
         <div class="col-lg-6">
-          <p><i class="fa fa-thermometer-half"></i> Air climatisé</p>
+          <p><i class="fa fa-music"></i> Texte musique</p>
+        </div>
+        <div class="col-lg-6">
+          <p><i class="fa fa-magic"></i> Texte cigarette</p>
+        </div>
+        <div class="col-lg-6">
+          <p><i class="fa fa-comments"></i> Texte discution</p>
         </div>
       </div>
     </div>
     <div class="col-sm-6">
       <div class="section-reservation">
+        <h2>$<%= @trajet.prix %> CAD par voyageur</h2>
         <% if current_member != nil && @trajet.member_id != current_member.id %>
-        <h2>$5 CAD par voyageur</h2>
-            Trajet proposé par  <%= @member.prenom %> <%= @member.nom %>
-            <%= link_to "Voir son profil", member_path(@member), target: :_blank %>
-            <div>
-              <%= form_tag("/members/#{@member.id}/trajets/#{@trajet.id}/reservation", method: "get") do %>
-                  <div class="form-group field">
-                    <%= label_tag(:nb_places, "Nombre de passagers") %>
-                    <%= text_field_tag :nb_places, 1, class: 'form-control' %>
-                  </div>
-                  <div class="form-group field field-invisible">
-                    <%= text_field_tag :trajet, @trajet.id, class: 'form-control' %>
-                  </div>
-                  <%= submit_tag("Réserver", :class => "btn btn-primary") %>
-              <% end %>
-            </div>
+            <% if @nbPlacesRestantes > 0 %>
+              <div>
+                <%= form_tag("/members/#{@member.id}/trajets/#{@trajet.id}/reservation", method: "get") do %>
+                    <div class="form-group field field-nb-places">
+                      <span>Je souhaite réserver</span>
+                      <%= select_tag(:nb_places, options_for_select(1..@nbPlacesRestantes), class: 'form-control') %>
+                      <span>places</span>
+                    </div>
+                    <div class="form-group field field-invisible">
+                      <%= text_field_tag :trajet, @trajet.id, class: 'form-control' %>
+                    </div>
+                    <%= submit_tag("Continuer", :class => "btn btn-primary") %>
+                <% end %>
+              </div>
+            <% else %>
+              <div>
+                <button class="btn btn-secondary" disabled>
+                  Réservation impossible - Véhicule complet
+                </button>
+              </div>
+            <% end %>
+        <% end %>
+      </div>
+
+      <div class="section-conducteur">
+        <% if current_member != nil && @trajet.member_id != current_member.id %>
+          Trajet proposé par  <%= @member.prenom %> <%= @member.nom %>
+          <%= link_to "Voir son profil", member_path(@member), target: :_blank %>
+        <% else %>
+          <h2>Réservations</h2>
+          <% @covoiturages.each do |covoiturage|%>
+              <p>
+                <%= link_to "#{covoiturage.member.prenom} #{covoiturage.member.nom}", member_path(covoiturage.member), target: :_blank %>
+                à réservé <%= covoiturage.nb_places %> place(s)
+              </p>
+          <% end %>
+          <div class="actions boutons-formulaire">
+            <%= link_to "Supprimer le trajet", member_trajet_path(@member, @trajet), method: :delete, data: { confirm: "Confirmez la suppression définitive du trajet" }, :class => 'btn btn-danger' %>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<% if current_member != nil && @trajet.member_id == current_member.id %>
-  <p>Supprimer le trajet</p>
-<% end %>
 <%= link_to "Retour à la liste des trajets", :back %>

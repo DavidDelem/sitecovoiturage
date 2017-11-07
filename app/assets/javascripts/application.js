@@ -19,4 +19,12 @@
 //= require bootstrap
 //= require jquery-ui
 //= require moment
+//= require bootstrap.min
+
+
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
 

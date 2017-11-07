@@ -2,11 +2,46 @@
 
   <%= render partial: "submenu", :locals => {:member_id => @member }  %>
 
-  <div class="row justify-content-center ">
-    <div class="btn-retour-profil">
-      <%= link_to "Retour au profil", :back %>
-    </div>
-
-
+  <div class="row">
+    <h1 class="title-lv1 border-bottom margin-bottom">Préférences</h1>
   </div>
+
+  <div class="row">
+    <%= form_tag("#", method: "get") do %>
+      <div class="row">
+        <div class="col ">
+          Discussion
+        </div>
+        <div class="col ">
+          <input type="radio" class="radio" name="example" id="ex1" value="ex1" checked />
+          <label for="ex1" class="label"></label>
+        </div>
+        <div class="col ">
+         <input type="radio" class="radio" name="example" id="ex2" value="ex2" />
+         <label for="ex2" class="label"></label>
+        </div>
+        <div class="col ">
+          <input type="radio" class="radio" name="example" id="ex3" value="ex3" />
+          <label for="ex3" class="label"></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input type="radio" class="radio" name="example2" id="ex4" value="ex4" />
+          <label for="ex4" class="label"></label>
+
+          <input type="radio" class="radio" name="example2" id="ex5" value="ex5" />
+          <label for="ex5" class="label" data-toggle="tooltip" data-placement="top" title="Ca dépend des jours"></label>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+
+  <div class="row btn-retour-profil">
+    <%= link_to "Retour au profil", :back %>
+  </div>
+
+
 </div>
