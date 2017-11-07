@@ -1,0 +1,33 @@
+<% if current_member != nil && @trajet.member_id != current_member.id %>
+<div class="container container-padding-top">
+  <div class="row">
+    <div class="col-lg-6 offset-md-3">
+      <h1 class="title-section">Confirmer la réservation</h1>
+    </div>
+    <div class="col-sm-6 offset-md-3">
+      <div class="section-reservation">
+            <div>
+              <p>Trajet de <%= @trajet.ville_depart %> à <%= @trajet.ville_destination %> le <%= @trajet.horaire_depart %></p>
+              <p>Nombre de places réservées: <%= @nb_places %></p>
+              <p>Tarif total: 5$</p>
+            </div>
+            <div>
+              <%= form_tag("/members/#{@trajet.member_id}/trajets/#{@trajet.id}/confirmation", method: "get") do %>
+                  <div class="form-group field field-invisible">
+                    <%= text_field_tag :nb_places, @nb_places, class: 'form-control' %>
+                  </div>
+                  <div class="form-group field field-invisible">
+                    <%= text_field_tag :trajet, @trajet.id, class: 'form-control' %>
+                  </div>
+                  <%= submit_tag("Confirmer et payer", :class => "btn btn-primary") %>
+                  <div class="paiement-methods">
+                    <i class="fa fa-cc-visa"></i> <i class="fa fa-cc-mastercard"></i> <i class="fa fa-cc-amex"></i> <i class="fa fa-cc-paypal"></i>
+                  </div>
+                  <%= link_to "Annuler et retourner au trajet", :back %>
+              <% end %>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

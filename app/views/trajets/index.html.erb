@@ -6,12 +6,12 @@
       <%= link_to 'Rechercher un covoiturage', search_index_path, :class => 'btn btn-primary btn-nouveau-trajet' %>
     </div>
       <% if !current_member.trajets_passager.empty? %>
-        <% current_member.trajets_passager.each do |trajet| %>
+        <% @trajetsPassager.each do |trajet| %>
             <div class="col-lg-6">
               <div class="trajet-elem">
                 <h2>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></h2>
                 <p><i class="fa fa-calendar"></i>Date</p>
-                <p><i class="fa fa-circle"></i>J'ai réservé X places</p>
+                <p><i class="fa fa-circle"></i>J'ai réservé <%= trajet.nb_places_reservees %> places</p>
                 <p><%= link_to "Détails du trajet", [current_member, trajet] %></p>
               </div>
             </div>
