@@ -14,10 +14,10 @@ body { padding-top: 80px; }
 }
 
 .btn-recherche-trajet {
-  text-align: center;
   .btn {
-    padding: 20px 50px 20px 50px;
+    width: 100%;
   }
+  text-align: center;
 }
 
 .navbar-site {
@@ -40,3 +40,4 @@ body { padding-top: 80px; }
   color: #484848;
   padding-bottom: 25px;
 }
+
