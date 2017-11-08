@@ -15,7 +15,7 @@
           <p><i class="fa fa-male"></i>  <%= @trajet.nb_places_totales%> places</p>
         </div>
         <div class="col-lg-6">
-          <p><i class="fa fa-suitcase"></i> Texte valise</p>
+          <p><i class="fa fa-suitcase"></i> <%= @trajet.dimension_valise %></p>
         </div>
         <div class="col-lg-6">
           <p><i class="fa fa-paw"></i> Animeaux refusés</p>
@@ -65,6 +65,9 @@
           <%= link_to "Voir son profil", member_path(@member), target: :_blank %>
         <% else %>
           <h2>Réservations</h2>
+            <% if @covoiturages.size == 0 %>
+              <p>Aucune places réservée pour le moment</p>
+            <% end %>
           <% @covoiturages.each do |covoiturage|%>
               <p>
                 <%= link_to "#{covoiturage.member.prenom} #{covoiturage.member.nom}", member_path(covoiturage.member), target: :_blank %>
@@ -77,6 +80,9 @@
         <% end %>
       </div>
     </div>
+
+    <div class="col-lg-12">
+      <%= link_to "Retour à la liste des trajets", :back %>
+    </div>
   </div>
 </div>
-<%= link_to "Retour à la liste des trajets", :back %>

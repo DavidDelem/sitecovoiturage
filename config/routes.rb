@@ -4,8 +4,10 @@ Rails.application.routes.draw do
     get '/preferences', to: 'members#preferences'
     post '/preferences', to: 'members#updatepreferences'
     resources :trajets do
-      get 'reservation'
-      get 'confirmation'
+      get 'reservation', to: 'reservation#show'
+      get 'paiement', to: 'reservation#paiement'
+      get 'confirmation', to: 'reservation#confirmation'
+      delete 'reservation', to: 'reservation#delete'
     end
   end
 

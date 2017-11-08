@@ -12,7 +12,16 @@
                 <h2>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></h2>
                 <p><i class="fa fa-calendar"></i> <%= trajet.horaire_depart %></p>
                 <p><i class="fa fa-circle"></i> J'ai réservé <%= trajet.nb_places_reservees %> places</p>
-                <p><%= link_to "Détails du trajet", [current_member, trajet] %></p>
+                <div class="trajet-elem-buttons">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <%= link_to "Détails du trajet", [current_member, trajet], :class => 'btn btn-secondary' %>
+                    </div>
+                    <div class="col-lg-6">
+                      <%= link_to "Annuler ma réservation", member_trajet_reservation_path(trajet.member, trajet), method: :delete, data: { confirm: "Confirmez l'annulation de votre réservation'" }, :class => 'btn btn-danger' %>
+                    </div>
+                  </div>
+                  </div>
               </div>
             </div>
         <% end %>
@@ -32,7 +41,16 @@
                   <h2>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></h2>
                   <p><i class="fa fa-calendar"></i> <%= trajet.horaire_depart %></p>
                   <p><i class="fa fa-circle"></i> <%= trajet.nb_places_reservees %> places réservées sur <%= trajet.nb_places_totales %></p>
-                  <p><%= link_to "Détails du trajet", [current_member, trajet] %></p>
+                  <div class="trajet-elem-buttons">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <%= link_to "Détails du trajet", [current_member, trajet], :class => 'btn btn-secondary' %>
+                      </div>
+                      <div class="col-lg-6">
+                        <%= link_to "Supprimer le trajet", member_trajet_path(current_member, trajet), method: :delete, data: { confirm: "Confirmez la suppression définitive du trajet" }, :class => 'btn btn-danger' %>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
           <% end %>

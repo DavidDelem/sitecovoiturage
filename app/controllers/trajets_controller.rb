@@ -54,12 +54,11 @@ class TrajetsController < ApplicationController
   end
 
   def create
-     @trajet = Trajet.new(params.require(:trajet).permit(:horaire_depart, :ville_depart, :ville_destination, :nb_places_totales))
+     @trajet = Trajet.new(params.require(:trajet).permit(:horaire_depart, :ville_depart, :ville_destination, :nb_places_totales, :prix, :dimension_valise))
      @trajet.member_id = current_member.id
      @trajet.save
      redirect_to member_trajet_path(current_member.id, @trajet.id)
   end
-
 
   def destroy
     @trajet = Trajet.find(params[:id])
@@ -67,31 +66,4 @@ class TrajetsController < ApplicationController
     redirect_to member_trajets_path
   end
 
-  def reservation
-    @trajet = Trajet.find(params[:trajet])
-    @nb_places = 0
-
-    if(params.has_key?(:nb_places))
-      @nb_places = params[:nb_places]
-    end
-  end
-
-  def confirmation
-    if(params.has_key?(:nb_places) && params.has_key?(:trajet))
-      @trajet = Trajet.find(params[:trajet])
-
-      # Contrôle du nombre de places restantes par rapport au nombre de places demandées
-      nbPlacesReservees = 0
-      @covoiturages = Covoiturage.where("trajet_id = ?", @trajet.id)
-      @covoiturages.each do |covoiturage|
-        nbPlacesReservees  += covoiturage.nb_places
-      end
-      nbPlacesRestantes = @trajet.nb_places_totales - nbPlacesReservees;
-
-      if(params[:nb_places].to_i <= nbPlacesRestantes)
-        @covoiturage = Covoiturage.create({ :trajet_id => @trajet.id, :member_id => current_member.id, :nb_places => params[:nb_places] })
-        @covoiturage.save
-      end
-    end
-  end
 end
