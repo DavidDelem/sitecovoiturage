@@ -62,13 +62,64 @@
  }
 
 .label {
-  background-color: grey;
-  width: 75px;
-  height: 75px;
-  display: block;
-  float: left;
-  margin: 10px;
+
+  background-size: 45px 45px;
+  background-repeat: no-repeat;
+  background-color: white;
+  width: 50px;
+  height: 50px;
 }
+
+label#noblabla {
+  background-image: image-url("noblabla.PNG");
+}
+
+label#blabla {
+  background-image: image-url("blabla.PNG");
+}
+
+label#lotblabla {
+  background-image: image-url("lotblabla.PNG");
+}
+
+label#nosmoke {
+  background-image: image-url("nosmoke.PNG");
+}
+
+label#smoke {
+  background-image: image-url("smoke.PNG");
+}
+
+label#lotsmoke {
+  background-image: image-url("lotsmoke.PNG");
+}
+
+label#nomusic {
+  background-image: image-url("nomusic.PNG");
+}
+
+label#music {
+  background-image: image-url("music.PNG");
+}
+
+label#lotmusic {
+  background-image: image-url("lotmusic.PNG");
+}
+
+label#noanimals {
+  background-image: image-url("noanimals.PNG");
+}
+
+label#animals {
+  background-image: image-url("animals.PNG");
+}
+
+label#lotanimals {
+  background-image: image-url("lotanimals.PNG");
+}
+
 input[type="radio"]:checked + label {
-  border: 3px solid red;
+  box-sizing: border-box;
+  border: 2px solid #0086BF;
+  border-radius: 3px;
 }

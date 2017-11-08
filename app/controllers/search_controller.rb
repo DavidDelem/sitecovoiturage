@@ -12,9 +12,11 @@ class SearchController < ApplicationController
       if !params["year"] && !params["month"] && !params["day"] then
         date_depart_min = DateTime.now.beginning_of_day
         date_depart_max = DateTime.now.at_end_of_day.localtime
+
         @year_depart = DateTime.now.year
         @month_depart = DateTime.now.month
         @day_depart = DateTime.now.day
+
       else
         date_depart_min = DateTime.new(params["year"].to_i, params["month"].to_i, params["day"].to_i, 0 ,0 ,0)
         date_depart_max = DateTime.new(params["year"].to_i, params["month"].to_i, params["day"].to_i, 23 ,59 ,59)

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171108042500) do
 
-  create_table "covoiturages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "covoiturages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "trajet_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171108042500) do
     t.index ["trajet_id"], name: "fk_rails_75c7ac80bd"
   end
 
-  create_table "members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20171108042500) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "trajets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.datetime "horaire_depart"
+  create_table "trajets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "horaire_depart", null: false
     t.string "ville_depart"
     t.string "ville_destination"
     t.integer "nb_places_totales"
