@@ -4,6 +4,7 @@
       <div class="form-recherche">
         <h1 class="title-section">Recherche</h1>
         <%= form_tag("/search", method: "get") do %>
+
             <div class="form-group field">
               <%= label_tag(:ville_depart, "Ville de départ") %>
               <%= text_field_tag :ville_depart, @ville_depart, class: 'form-control' %>
@@ -29,14 +30,21 @@
     </div>
     <div class="col-lg-8 offset-md-1">
       <h1 class="title-section">Trajets correspondants</h1>
-      <% @trajet.each do |trajet| %>
+
+      <% if @trajet && !@trajet.empty?
+           @trajet.each do |trajet| %>
           <div class="trajet-elem">
             <%= trajet.ville_depart %>
             <%= trajet.ville_destination %>
             <%= trajet.horaire_depart %>
             <%= link_to 'Détails du trajet', member_trajet_path(trajet.member_id,trajet) %>
           </div>
-      <% end %>
+      <% end
+      else %>
+          <div class="alert alert-danger" role="alert">
+            <%= @error %>
+          </div>
+      <%end%>
     </div>
   </div>
 </div>

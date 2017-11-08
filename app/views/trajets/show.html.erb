@@ -18,16 +18,52 @@
           <p><i class="fa fa-suitcase"></i> <%= @trajet.dimension_valise %></p>
         </div>
         <div class="col-lg-6">
-          <p><i class="fa fa-paw"></i> Animeaux refusés</p>
+          <%=
+            case @member.preference_animaux
+              when 0
+                image_tag "noanimaux.PNG"
+              when 1
+                image_tag "animaux.PNG"
+              when 2
+                image_tag "lotanimaux.PNG"
+              end
+            %>
         </div>
         <div class="col-lg-6">
-          <p><i class="fa fa-music"></i> Texte musique</p>
+          <%=
+            case @member.preference_musique
+              when 0
+                image_tag "nomusique.PNG"
+              when 1
+                image_tag "musique.PNG"
+              when 2
+                image_tag "lotmusique.PNG"
+            end
+          %>
         </div>
         <div class="col-lg-6">
-          <p><i class="fa fa-magic"></i> Texte cigarette</p>
+          <%=
+            case @member.preference_cigarette
+              when 0
+                image_tag "nocigarette.PNG"
+              when 1
+                image_tag "cigarette.PNG"
+              when 2
+                image_tag "lotcigarette.PNG"
+            end
+          %>
         </div>
         <div class="col-lg-6">
-          <p><i class="fa fa-comments"></i> Texte discution</p>
+          <%=
+            case @member.preference_discussion
+              when 0
+                image_tag "nodiscussion.PNG"
+              when 1
+                image_tag "discussion.PNG"
+              when 2
+                image_tag "lotdiscussion.PNG"
+            end
+          %>
         </div>
       </div>
     </div>
