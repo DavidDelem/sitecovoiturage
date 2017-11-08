@@ -12,15 +12,29 @@
             <%= form.label :ville_destination, 'Ville de destination' %><br>
             <%= form.text_field :ville_destination, :class => 'form-control' %>
           </div>
-          <div class="form-group field">
-            <%= form.label :nb_places_totales, 'Nombre de places disponibles' %><br>
-            <%= form.number_field :nb_places_totales, :class => 'form-control' %>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group field">
+                <%= form.label :nb_places_totales, 'Nombre de places' %><br>
+                <%= form.select :nb_places_totales, options_for_select(1..9), {}, {class: "form-control"} %>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group field">
+                <%= form.label :prix, 'Prix par passager en $CAD' %><br>
+                <%= form.number_field :prix, :class => 'form-control' %>
+              </div>
+            </div>
           </div>
           <div class="form-group field form-date">
             <%= form.label :horaire_depart, 'Date et heure de départ' %><br>
             <%= form.datetime_select :horaire_depart, :ampm => false, :minute_step => 15 %>
           </div>
-          <div class="actions">
+          <div class="form-group field form-date">
+            <%= form.label :dimension_valise, 'Bagages autorisés' %><br>
+            <%= form.select :dimension_valise, ['Aucun', 'Petit sac à dos', 'Moyenne valise', 'Grande valise'], {}, {class: "form-control"} %>
+          </div>
+          <div class="actions actions-large">
             <%= form.submit 'Valider', :class => 'btn btn-primary' %>
           </div>
       <% end %>

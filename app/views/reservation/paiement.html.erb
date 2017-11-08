@@ -1,0 +1,56 @@
+<% if current_member != nil && @trajet.member_id != current_member.id %>
+    <div class="container container-padding-top">
+      <div class="row">
+        <div class="col-lg-6 offset-md-3">
+          <h1 class="title-section">Paiement</h1>
+        </div>
+        <div class="col-sm-6 offset-md-3">
+          <div class="section-reservation">
+            <div>
+              <%= form_tag("/members/#{@trajet.member_id}/trajets/#{@trajet.id}/confirmation", method: "get") do %>
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="form-group field">
+                        <label>Numéro de carte</label>
+                        <%= number_field_tag :num_carte, nil, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group field">
+                        <label>CVV</label>
+                        <%= number_field_tag :cvv, nil, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group field">
+                        <label>Année d'expiration</label>
+                        <%= select_tag :year_expiration, options_for_select(2017..2024), class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group field">
+                        <label>Mois d'expiration</label>
+                        <%= select_tag :month_expiration, options_for_select(1..12), class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <%= submit_tag("Confirmer et payer #{@tarif_total} $CAD", :class => "btn btn-primary") %>
+                      <div class="paiement-methods">
+                        <i class="fa fa-cc-visa"></i> <i class="fa fa-cc-mastercard"></i> <i class="fa fa-cc-amex"></i> <i class="fa fa-cc-paypal"></i>
+                      </div>
+                    </div>
+                    <div class="form-group field field-invisible">
+                      <%= text_field_tag :nb_places, @nb_places, class: 'form-control' %>
+                    </div>
+                    <div class="form-group field field-invisible">
+                      <%= text_field_tag :trajet, @trajet.id, class: 'form-control' %>
+                    </div>
+                  </div>
+                  <%= link_to "Retour au récapitulatif", :back %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   resources :members, only: [:show] do
     get '/preferences', to: 'members#preferences'
     resources :trajets do
-      get 'reservation'
-      get 'confirmation'
+      get 'reservation', to: 'reservation#show'
+      get 'paiement', to: 'reservation#paiement'
+      get 'confirmation', to: 'reservation#confirmation'
+      delete 'reservation', to: 'reservation#delete'
     end
   end
 
