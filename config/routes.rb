@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :members
   resources :members, only: [:show] do
     get '/preferences', to: 'members#preferences'
+    post '/preferences', to: 'members#updatepreferences'
     resources :trajets do
       get 'reservation'
       get 'confirmation'

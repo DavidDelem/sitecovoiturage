@@ -62,9 +62,7 @@
  }
 
 .label {
-  background-color: pink;
-  text-indent: -999em;
-  border: 10px solid white;
+  background-color: grey;
   width: 75px;
   height: 75px;
   display: block;
@@ -72,5 +70,5 @@
   margin: 10px;
 }
 input[type="radio"]:checked + label {
-  border: 1px solid black;
+  border: 3px solid red;
 }
