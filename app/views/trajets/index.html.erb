@@ -5,7 +5,7 @@
       <h1 class="title-section title-inline">Voyageur</h1>
       <%= link_to 'Rechercher un covoiturage', search_index_path, :class => 'btn btn-primary btn-nouveau-trajet' %>
     </div>
-      <% if !current_member.trajets_passager.empty? %>
+      <% if !@trajetsPassager.empty? %>
         <% @trajetsPassager.each do |trajet| %>
             <div class="col-lg-6">
               <div class="trajet-elem">
@@ -17,9 +17,29 @@
                     <div class="col-lg-6">
                       <%= link_to "Détails du trajet", [current_member, trajet], :class => 'btn btn-secondary' %>
                     </div>
-                    <div class="col-lg-6">
-                      <%= link_to "Annuler ma réservation", member_trajet_reservation_path(trajet.member, trajet), method: :delete, data: { confirm: "Confirmez l'annulation de votre réservation'" }, :class => 'btn btn-danger' %>
-                    </div>
+                    <% timeNow = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day,  DateTime.now.hour, DateTime.now.min).utc %>
+                    <% if trajet.horaire_depart > timeNow%>
+                      <div class="col-lg-6">
+                        <%= link_to "Annuler ma réservation", member_trajet_reservation_path(trajet.member, trajet), method: :delete, data: { confirm: "Confirmez l'annulation de votre réservation'" }, :class => 'btn btn-danger' %>
+                      </div>
+                    <%else%>
+                      <% @myCovoiturage = Covoiturage.where("trajet_id = ? AND member_id = ?", trajet.id, current_member) %>
+                      <%
+                        trajetnote = nil;
+                        @myCovoiturage.each do |covoiturage|
+                          trajetnote = covoiturage.note
+                        end
+                      %>
+                      <% if !trajetnote %>
+                        <div class="col-lg-6">
+                          <%= link_to "Noter le voyage", member_trajet_avis_path(current_member, trajet), :class => 'btn btn-success' %>
+                        </div>
+                      <% else %>
+                        <div class="col-lg-6">
+                          <%= link_to "Déjà noté", member_trajet_avis_path(current_member, trajet), :class => 'btn btn-success disabled' %>
+                        </div>
+                      <% end %>
+                    <%end%>
                   </div>
                   </div>
               </div>
@@ -34,7 +54,7 @@
           <h1 class="title-section title-inline">Conducteur</h1>
           <%= link_to 'Proposer un nouveau trajet', new_member_trajet_path(current_member), :class => 'btn btn-primary btn-nouveau-trajet' %>
         </div>
-        <% if !current_member.trajets_passager.empty? %>
+        <% if !@trajetsConducteur.empty? %>
           <% @trajetsConducteur.each do |trajet| %>
               <div class="col-lg-6">
                 <div class="trajet-elem">

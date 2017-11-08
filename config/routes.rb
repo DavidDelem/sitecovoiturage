@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get 'paiement', to: 'reservation#paiement'
       get 'confirmation', to: 'reservation#confirmation'
       delete 'reservation', to: 'reservation#delete'
+      get 'avis', to: 'reservation#avis'
+      post 'avis', to: 'reservation#avisupdate'
     end
   end
 

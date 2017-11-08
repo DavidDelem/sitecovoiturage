@@ -13,7 +13,7 @@ class ReservationController < ApplicationController
   def delete
     @covoiturage = Covoiturage.where("member_id = ? AND trajet_id = ?", current_member.id, params[:trajet_id]).take
     @covoiturage.destroy
-    redirect_to member_trajets_path
+    redirect_to member_trajets_path(current_member.id)
   end
 
   def paiement
@@ -41,6 +41,25 @@ class ReservationController < ApplicationController
         @covoiturage.save
       end
     end
+  end
+
+  def avis
+    @member = params[:member_id]
+    @trajer = params[:trajet_id]
+  end
+
+  def avisupdate
+    @covoiturage =  Covoiturage.where("trajet_id = ? AND member_id = ?", params[:trajet_id], params[:member_id])
+
+    if @covoiturage.update(reservation_avis)
+      redirect_to member_trajet_avis_path(params[:member_id], params[:trajet_id])
+    else
+      redirect_to member_trajet_avis_path(params[:member_id], params[:trajet_id])
+    end
+  end
+
+  def reservation_avis
+    params.permit(:avis, :note)
   end
 
 end

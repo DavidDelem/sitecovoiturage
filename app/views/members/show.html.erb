@@ -26,9 +26,18 @@
           <div class="presentation">
             <p><%= @member.presentation %></p>
           </div>
-          <div class="statistiques">
-            <p>15 covoiturages depuis le 12/01/2015</p>
-            <p>* * * * * Moyenne de 4,7/5</p>
+        <div>
+        <%= @nbTrajet %> covoiturages effectués
+          <%= @moyenneNotes %>/5 de moyenne
+        <% @member.trajets.each do |trajet| %>
+          <% trajet.covoiturages.each do |covoiturage| %>
+            <div>
+              <%= covoiturage.avis %>
+              <%= covoiturage.note %>/5
+            </div>
+          <% end %>
+        <% end %>
+
           </div>
         </div>
 

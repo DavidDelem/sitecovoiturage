@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108042500) do
+ActiveRecord::Schema.define(version: 20171108164620) do
 
   create_table "covoiturages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20171108042500) do
     t.bigint "trajet_id"
     t.bigint "member_id"
     t.integer "nb_places"
+    t.integer "note"
+    t.string "avis"
     t.index ["member_id"], name: "fk_rails_e69eaccbc7"
     t.index ["trajet_id"], name: "fk_rails_75c7ac80bd"
   end
