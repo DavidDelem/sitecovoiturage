@@ -1,17 +1,27 @@
-<%= form_tag("#", method: "post") do %>
+<% if member_signed_in? %>
+    <div class="container container-padding-top">
+      <div class="row">
+        <div class="col-lg-6 offset-md-3">
+          <h1 class="title-section">Noter le trajet</h1>
 
-    <div class="field form-group">
-      <label>Avis</label><br />
-      <%= text_area_tag(:avis, "Votre avis") %>
+          <%= form_tag("#", method: "post") do %>
+
+              <div class="field form-group">
+                <label>Qu'avez vous pensé du conducteur ?</label><br />
+                <%= text_area_tag(:avis, nil, class: 'form-control')  %>
+              </div>
+
+              <div class="form-group field">
+                <%= label_tag(:note, "Quelle note sur 5 lui donnez vous ?") %>
+                <%= select_tag "note", options_for_select(1..5), :class => 'form-control' %>
+              </div>
+
+              <div class="actions boutons-formulaire">
+                <%= submit_tag "Envoyer la note", :class => 'btn btn-primary'  %>
+              </div>
+
+          <% end %>
+        </div>
+      </div>
     </div>
-
-    <div class="form-group field">
-      <%= label_tag(:note, "Note : ") %>
-      <%= select_tag "note", options_for_select(1..5) %>
-    </div>
-
-    <div class="actions boutons-formulaire">
-      <%= submit_tag "Enregistrer", :class => 'btn btn-primary'  %>
-    </div>
-
 <% end %>

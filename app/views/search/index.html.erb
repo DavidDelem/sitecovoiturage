@@ -14,9 +14,9 @@
               <%= text_field_tag :ville_destination, @ville_destination, class: 'form-control' %>
             </div>
             <div class="form-group field form-date">
-              <%= label_tag(:horaire_depart, "Jour de départ : ") %>
+              <%= label_tag(:horaire_depart, "Jour de départ") %>
               <div>
-                <%= select_tag "year", options_for_select(2010..2099, @year_depart)  %>
+                <%= select_tag "year", options_for_select(2017..2020, @year_depart)  %>
                <%= select_tag "month", options_for_select(1..12, @month_depart) %>
                <%= select_tag "day", options_for_select(1..31, @day_depart) %>
               </div>
@@ -33,11 +33,19 @@
 
       <% if @trajet && !@trajet.empty?
            @trajet.each do |trajet| %>
-          <div class="trajet-elem">
-            <%= trajet.ville_depart %>
-            <%= trajet.ville_destination %>
-            <%= trajet.horaire_depart %>
-            <%= link_to 'Détails du trajet', member_trajet_path(trajet.member_id,trajet) %>
+          <div class="trajet-elem trajet-recherche-elem">
+            <div class="row">
+              <div class="col-lg-5 infos-trajet">
+                <p>De <%= trajet.ville_depart %> à <%= trajet.ville_destination %></p>
+                <p>Le <%= trajet.horaire_depart %></p>
+              </div>
+              <div class="col-lg-4 nb-places-restantes">
+                <b><%= trajet.nb_places_restantes %> place(s) restantes</b>
+              </div>
+              <div class="col-lg-3">
+                <%= link_to 'Voir le détail', member_trajet_path(trajet.member_id,trajet), class: 'btn btn-secondary' %>
+              </div>
+            </div>
           </div>
       <% end
       else %>

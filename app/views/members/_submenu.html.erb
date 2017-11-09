@@ -1,9 +1,10 @@
 <div class="row float-left col-md-3 col-sm-1">
   <div class="sidebar">
     <div class="list-group">
-      <%= link_to "Informations personnelles", edit_member_registration_path,   { :class=>"list-group-item" } %>
+      <p class="list-group-item"><b>Menu</b></p>
+      <%= link_to "Informations personnelles", edit_member_registration_path,   { :class=>"list-group-item list-group-item-action" } %>
 
-      <%= link_to "Préférences", member_preferences_url(member_id),   { :class=>"list-group-item" } %>
+      <%= link_to "Préférences", member_preferences_url(member_id),   { :class=>"list-group-item list-group-item-action" } %>
     </div>
   </div>
 </div>

@@ -101,3 +101,17 @@
 .trajet-elem-buttons .btn {
   width: 100%;
 }
+
+.trajet-recherche-elem {
+  padding-bottom: 6px;
+
+  .infos-trajet {
+    line-height: 10px;
+  }
+
+  .nb-places-restantes b {
+    position: relative;
+    top: 5px;
+  }
+
+}

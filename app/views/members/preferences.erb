@@ -1,97 +1,91 @@
-<div class="container">
+<% if member_signed_in? %>
+  <div class="container container-padding-top">
+    <%= render partial: "submenu", :locals => {:member_id => @member }  %>
 
-  <%= render partial: "submenu", :locals => {:member_id => @member }  %>
+    <div class="row justify-content-center ">
+      <div class="col-sm-8">
+        <h1 class="title-section">Préférences</h1>
 
-  <div class="row justify-content-center ">
-    <div class="col-sm-6">
+        <%= form_tag("#", method: "post") do %>
+          <div class="row">
+            <div class="col ">
+              Discussion
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_discussion', "0", !!( @member.preference_discussion == 0), class: "radio" %>
+              <%= label_tag 'preference_discussion_0', '', class: 'label', "id": "nodiscussion", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Vous ne m'entendrez pas beaucoup" %>
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_discussion', "1", !!( @member.preference_discussion == 1), class: "radio" %>
+              <%= label_tag 'preference_discussion_1', '', class: 'label', "id": "discussion", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Je suis parfois d'humeur bavarde" %>
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_discussion', "2", !!( @member.preference_discussion == 2), class: "radio" %>
+              <%= label_tag 'preference_discussion_2', '', class: 'label', "id": "lotdiscussion", "data-toggle": 'tooltip', "data-placement": 'top', "title": "J'aime bien discuter" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col ">
+              Cigarette
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_cigarette', "0", !!( @member.preference_cigarette == 0), class: "radio" %>
+              <%= label_tag 'preference_cigarette_0', '', class: 'label', "id": "nocigarette", "data-toggle": 'tooltip', "data-placement": 'top', "title": "La cigarette me dérange" %>
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_cigarette', "1", !!( @member.preference_cigarette == 1), class: "radio" %>
+              <%= label_tag 'preference_cigarette_1', '', class: 'label', "id": "cigarette", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Ca dépend des jours" %>
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_cigarette', "2", !!( @member.preference_cigarette == 2), class: "radio" %>
+              <%= label_tag 'preference_cigarette_2', '', class: 'label', "id": "lotcigarette", "data-toggle": 'tooltip', "data-placement": 'top', "title": "La cigarette ne me dérange pas" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col ">
+              Musique
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_musique', "0", !!( @member.preference_musique == 0), class: "radio" %>
+              <%= label_tag 'preference_musique_0', '', class: 'label', "id": "nomusique", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Je n'écoute pas de musique en voiture" %>
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_musique', "1", !!( @member.preference_musique == 1), class: "radio" %>
+              <%= label_tag 'preference_musique_1', '', class: 'label', "id": "musique", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Des fois oui, des fois non" %>
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_musique', "2", !!( @member.preference_musique == 2), class: "radio" %>
+              <%= label_tag 'preference_musique_2', '', class: 'label', "id": "lotmusique", "data-toggle": 'tooltip', "data-placement": 'top', "title": "J'aime bien écouter de la musique" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col ">
+              Animaux
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_animaux', "0", !!( @member.preference_animaux == 0), class: "radio" %>
+              <%= label_tag 'preference_animaux_0', '', class: 'label', "id": "noanimaux", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Je ne veux pas voyager avec un animal" %>
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_animaux', "1", !!( @member.preference_animaux == 1), class: "radio" %>
+              <%= label_tag 'preference_animaux_1', '', class: 'label', "id": "animaux", "data-toggle": 'tooltip', "data-placement": 'top', "title": "En fonction de l'animal" %>
+            </div>
+            <div class="col ">
+              <%= radio_button_tag 'preference_animaux', "2", !!( @member.preference_animaux == 2), class: "radio" %>
+              <%= label_tag 'preference_animaux_2', '', class: 'label', "id": "lotanimaux", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Je n'ai rien contre les animaux" %>
+            </div>
+          </div>
 
-      <h2>Modification du profil</h2>
+          <div class="actions boutons-formulaire">
+            <%= submit_tag "Mettre à jour les préférences", :class => 'btn btn-primary'  %>
+          </div>
+        <% end %>
 
-
-    <%= form_tag("#", method: "post") do %>
-      <div class="row">
-        <div class="col ">
-          Discussion
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_discussion', "0", !!( @member.preference_discussion == 0), class: "radio" %>
-          <%= label_tag 'preference_discussion_0', '', class: 'label', "id": "nodiscussion", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Vous ne m'entendrez pas beaucoup" %>
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_discussion', "1", !!( @member.preference_discussion == 1), class: "radio" %>
-          <%= label_tag 'preference_discussion_1', '', class: 'label', "id": "discussion", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Je suis parfois d'humeur bavarde" %>
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_discussion', "2", !!( @member.preference_discussion == 2), class: "radio" %>
-          <%= label_tag 'preference_discussion_2', '', class: 'label', "id": "lotdiscussion", "data-toggle": 'tooltip', "data-placement": 'top', "title": "J'aime bien discuter" %>
+        <div class="row btn-retour-profil">
+          <%= link_to "Retour au profil", :back %>
         </div>
       </div>
-      <div class="row">
-        <div class="col ">
-          Cigarette
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_cigarette', "0", !!( @member.preference_cigarette == 0), class: "radio" %>
-          <%= label_tag 'preference_cigarette_0', '', class: 'label', "id": "nocigarette", "data-toggle": 'tooltip', "data-placement": 'top', "title": "La cigarette me dérange" %>
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_cigarette', "1", !!( @member.preference_cigarette == 1), class: "radio" %>
-          <%= label_tag 'preference_cigarette_1', '', class: 'label', "id": "cigarette", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Ca dépend des jours" %>
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_cigarette', "2", !!( @member.preference_cigarette == 2), class: "radio" %>
-          <%= label_tag 'preference_cigarette_2', '', class: 'label', "id": "lotcigarette", "data-toggle": 'tooltip', "data-placement": 'top', "title": "La cigarette ne me dérange pas" %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col ">
-          Musique
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_musique', "0", !!( @member.preference_musique == 0), class: "radio" %>
-          <%= label_tag 'preference_musique_0', '', class: 'label', "id": "nomusique", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Je n'écoute pas de musique en voiture" %>
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_musique', "1", !!( @member.preference_musique == 1), class: "radio" %>
-          <%= label_tag 'preference_musique_1', '', class: 'label', "id": "musique", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Des fois oui, des fois non" %>
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_musique', "2", !!( @member.preference_musique == 2), class: "radio" %>
-          <%= label_tag 'preference_musique_2', '', class: 'label', "id": "lotmusique", "data-toggle": 'tooltip', "data-placement": 'top', "title": "J'aime bien écouter de la musique" %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col ">
-          Animaux
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_animaux', "0", !!( @member.preference_animaux == 0), class: "radio" %>
-          <%= label_tag 'preference_animaux_0', '', class: 'label', "id": "noanimaux", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Je ne veux pas voyager avec un animal" %>
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_animaux', "1", !!( @member.preference_animaux == 1), class: "radio" %>
-          <%= label_tag 'preference_animaux_1', '', class: 'label', "id": "animaux", "data-toggle": 'tooltip', "data-placement": 'top', "title": "En fonction de l'animal" %>
-        </div>
-        <div class="col ">
-          <%= radio_button_tag 'preference_animaux', "2", !!( @member.preference_animaux == 2), class: "radio" %>
-          <%= label_tag 'preference_animaux_2', '', class: 'label', "id": "lotanimaux", "data-toggle": 'tooltip', "data-placement": 'top', "title": "Je n'ai rien contre les animaux" %>
-        </div>
-      </div>
-
-      <div class="actions boutons-formulaire">
-        <%= submit_tag "Mettre à jour les préférences", :class => 'btn btn-primary'  %>
-      </div>
-
-    <% end %>
-
-
-
-
-  <div class="row btn-retour-profil">
-    <%= link_to "Retour au profil", :back %>
+    </div>
   </div>
 
-
-</div>
-
-  </div></div>
+<% end %>

@@ -29,6 +29,23 @@ class SearchController < ApplicationController
       date_depart_max = DateTime.new(@year_depart.to_i, @month_depart.to_i, @day_depart.to_i, 23 ,59 ,59)
 
       @trajet = Trajet.where("ville_depart = ? AND ville_destination = ? AND horaire_depart BETWEEN ? AND ?", params[:ville_depart], params[:ville_destination], date_depart_min, date_depart_max)
+
+      @trajet.each do |trajet|
+        trajet.class_eval do
+          attr_accessor :nb_places_restantes
+        end
+      end
+
+      @trajet.each do |trajet|
+        nbPlacesReservees = 0
+        @covoiturages = Covoiturage.where("trajet_id = ?", trajet.id)
+        @covoiturages.each do |covoiturage|
+          nbPlacesReservees += covoiturage.nb_places
+        end
+        trajet.nb_places_restantes = trajet.nb_places_totales - nbPlacesReservees
+      end
+
+
       if @trajet.empty? then
         @error = "Pas de covoiturage trouvé"
       end
