@@ -27,14 +27,37 @@
             <p><%= @member.presentation %></p>
           </div>
         <div>
-        <%= @nbTrajet %> covoiturages effectués
-          <%= @moyenneNotes %>/5 de moyenne
+
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <%= @moyenneNotes %>/5 <br>
+        <h5>Avis : </h5>
         <% @member.trajets.each do |trajet| %>
           <% trajet.covoiturages.each do |covoiturage| %>
-            <div>
-              <%= covoiturage.avis %>
-              <%= covoiturage.note %>/5
-            </div>
+              <div class="avis-elem">
+                <div class="row">
+                  <div class="col">
+                    <b><p>
+                    <%= case covoiturage.note
+                          when 1
+                            "A éviter"
+                          when 2
+                            "Décevant"
+                          when 3
+                            "Bien"
+                          when 4
+                            "Très bien"
+                          when 5
+                            "Parfais"
+                        end
+
+                    %>
+                    </p></b>
+                    <p>
+                      <%= covoiturage.avis %>
+                    </p>
+                  </div>
+                </div>
+              </div>
           <% end %>
         <% end %>
 
