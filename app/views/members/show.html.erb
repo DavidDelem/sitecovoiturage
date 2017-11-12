@@ -3,7 +3,11 @@
         <div class="col-lg-4">
           <div class="profil-picture-container">
             <div class="profil-picture">
-              <img src="http://cdn.cnn.com/cnnnext/dam/assets/161010191224-barack-obama-hedshot-large-169.jpg">
+              <% if @member.image %>
+                  <%= image_tag (Rails.root+"app/assets/images/profil/"+@member.image)%>
+              <% else %>
+                  <img src="http://cdn.cnn.com/cnnnext/dam/assets/161010191224-barack-obama-hedshot-large-169.jpg">
+            <% end %>
             </div>
           </div>
           <div class="profil-details-container">

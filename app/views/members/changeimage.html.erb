@@ -1,0 +1,29 @@
+<% if member_signed_in? %>
+    <div class="container container-padding-top">
+      <%= render partial: "submenu", :locals => {:member_id => @member }  %>
+
+      <div class="row justify-content-center ">
+        <div class="col-sm-8">
+          <h1 class="title-section">Changer l'image de profil</h1>
+
+            <%= form_tag("#", method: "post", multipart: true) do  %>
+              <%= file_field_tag 'picture' %>
+              <%= submit_tag("envoyer") %>
+
+           <% end %>
+          <% if @member.image %>
+            <div class="profil-picture-container">
+              <div class="profil-picture">
+                <%= image_tag (Rails.root+"app/assets/images/profil/"+@member.image)%>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="row btn-retour-profil">
+            <%= link_to "Retour au profil", :back %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% end %>

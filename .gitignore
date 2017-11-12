@@ -25,3 +25,5 @@
 config/database.yml
 Gemfile.lock
 .idea/
+
+app/assets/images/profil/
