@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :members
   resources :members, only: [:show] do
-    get '/preferences', to: 'members#preferences'
-    post '/preferences', to: 'members#updatepreferences'
+    get 'preferences', to: 'members#preferences'
+    post 'preferences', to: 'members#updatepreferences'
+    get 'changeimage', to: 'members#changeimage'
+    post 'changeimage', to: 'members#upload'
     resources :trajets do
       get 'reservation', to: 'reservation#show'
       get 'paiement', to: 'reservation#paiement'
