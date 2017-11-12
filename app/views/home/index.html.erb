@@ -1,11 +1,16 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-lg-12">
-      <h1>TravelExpress</h1>
-    </div>
-
+      <div class="wide">
+        <div class="col-lg-6 offset-lg-3 logo">
+          <img src="<%= asset_path('logo.png') %>" alt="TravelExpress">
+        </div>
+      </div>
       <%= form_tag("/search", method: "get") do %>
-            <div class="row">
+            <div class="row zone-recherche">
+              <div class="col-lg-12">
+                <h2>En route !</h2>
+                <p>Trouvez un covoiturage et éconnomisez.</p>
+              </div>
               <div class="col">
                 <%= text_field_tag :ville_depart, @ville_depart, placeholder: 'Ville de départ', class: 'form-control' %>
               </div>

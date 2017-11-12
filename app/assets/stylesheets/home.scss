@@ -41,3 +41,23 @@ body { padding-top: 80px; }
   padding-bottom: 25px;
 }
 
+.wide {
+  width:100%;
+  min-height: 380px;
+  background-image: url("fond-2.jpg");
+  background-size:cover;
+  background-position-x: center;
+}
+
+.wide .logo img {
+  width: 100%;
+  padding-top: 55px;
+}
+
+.zone-recherche {
+  padding-top: 50px;
+}
+
+.zone-recherche .btn {
+  cursor: pointer;
+}
