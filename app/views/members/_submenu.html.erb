@@ -3,11 +3,9 @@
     <div class="list-group">
       <p class="list-group-item"><b>Menu</b></p>
       <%= link_to "Informations personnelles", edit_member_registration_path,   { :class=>"list-group-item list-group-item-action" } %>
-
+      <%= link_to "Image de profil", member_changeimage_url(member_id),   { :class=>"list-group-item list-group-item-action" } %>
       <%= link_to "Préférences", member_preferences_url(member_id),   { :class=>"list-group-item list-group-item-action" } %>
-
-      <%= link_to "Changer l'image", member_changeimage_url(member_id),   { :class=>"list-group-item list-group-item-action" } %>
-
+      <%= link_to "Désinscription", member_suppression_url(member_id),   { :class=>"list-group-item list-group-item-action" } %>
     </div>
   </div>
 </div>

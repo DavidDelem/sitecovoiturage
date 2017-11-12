@@ -21,7 +21,7 @@
             <% if current_member != nil && @member.id == current_member.id %>
                 <h2>Configuration</h2>
                 <p><%= link_to "Mettre à jours mon profil", edit_member_registration_path, class: 'btn btn-primary' %></p>
-                <p><%= link_to "Supprimer mon compte", edit_member_registration_path, class: 'btn btn-danger' %></p>
+                <p><%= link_to "Supprimer mon compte", member_suppression_url(@member.id), class: 'btn btn-danger' %></p>
             <% end %>
           </div>
         </div>

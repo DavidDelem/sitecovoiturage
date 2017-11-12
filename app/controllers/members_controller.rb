@@ -46,6 +46,10 @@ class MembersController < ApplicationController
     redirect_to member_changeimage_url(@member)
   end
 
+  def suppression
+    @member = Member.find(params[:member_id])
+  end
+
 
   private
 

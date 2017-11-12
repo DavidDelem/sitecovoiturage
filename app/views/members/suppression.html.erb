@@ -1,0 +1,15 @@
+<% if member_signed_in? %>
+    <div class="container container-padding-top">
+      <%= render partial: "submenu", :locals => {:member_id => @member }  %>
+
+      <div class="row justify-content-center ">
+        <div class="col-sm-8">
+          <h1 class="title-section">Suppression du compte</h1>
+          <p>La suppression est définitive</p>
+          <div class="actions boutons-formulaire">
+            <%= button_to "Supprimer mon compte", registration_path(@member), data: { confirm: "Confirmez la suppression définitive du compte" }, method: :delete, :class => 'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

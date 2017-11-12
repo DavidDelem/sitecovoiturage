@@ -4,8 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   # Lien member -> trajet
-  has_many :trajets
+  has_many :trajets, dependent: :destroy
   # Lien covoiturage -> member
   has_many :covoiturages
-  has_many :trajets_passager, through: :covoiturages, source: :trajet
+  has_many :trajets_passager, through: :covoiturages, source: :trajet, dependent: :destroy
 end
