@@ -40,7 +40,7 @@
                 <p>Le <%= trajet.horaire_depart %></p>
               </div>
               <div class="col-lg-4 nb-places-restantes">
-                <b><%= trajet.nb_places_restantes %> place(s) restantes</b>
+                <b><%= trajet.nb_places_restantes %> place(s) restantes - <%= trajet.prix %>$</b>
               </div>
               <div class="col-lg-3">
                 <%= link_to 'Voir le détail', member_trajet_path(trajet.member_id,trajet), class: 'btn btn-secondary' %>

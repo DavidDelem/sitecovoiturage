@@ -6,7 +6,7 @@
               <% if @member.image %>
                   <%= image_tag (Rails.root+"app/assets/images/profil/"+@member.image)%>
               <% else %>
-                  <img src="http://cdn.cnn.com/cnnnext/dam/assets/161010191224-barack-obama-hedshot-large-169.jpg">
+                  <img src="https://pbs.twimg.com/profile_images/847889302025637889/xnqhPM_L_400x400.jpg">
             <% end %>
             </div>
           </div>
@@ -32,15 +32,15 @@
           </div>
           <div class="note">
             <i class="fa fa-star" aria-hidden="true"></i>
-            <% if !@moyenneNotes.nan? %>
+            <% if @moyenneNotes >= 1 %>
                 <span>La note moyenne de conducteur est de <%= @moyenneNotes %>/5</span>
             <% else %>
-                <span>L'utilisateur n'a pas encore de note moyenne de conducteur</span>
+                <span>L'utilisateur n'a pas encore de note moyenne</span>
             <% end %>
           </div>
           <div class="avis">
             <i class="fa fa-comments"></i>
-            <% if !@moyenneNotes.nan? %>
+            <% if @moyenneNotes >= 1 %>
               <span>Avis sur le conducteur</span>
             <% else %>
                 <span>L'utilisateur n'a pas encore d'avis de la part de ses passagers</span>

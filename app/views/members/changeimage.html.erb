@@ -6,12 +6,13 @@
         <div class="col-sm-8">
           <h1 class="title-section">Changer l'image de profil</h1>
            <%= form_tag("#", method: "post", multipart: true) do  %>
-             <%= file_field_tag 'picture', class: 'file' %>
-             <%= submit_tag("envoyer") %>
+              <div class="form-group">
+                <%= file_field_tag 'picture', class: 'file' %>
+              </div>
+              <div class="actions actions-large">
+                <%= submit_tag "Envoyer", :class => 'btn btn-primary'  %>
+              </div>
            <% end %>
-           <div class="row btn-retour-profil">
-             <%= link_to "Retour au profil", :back %>
-           </div>
         </div>
       </div>
     </div>
