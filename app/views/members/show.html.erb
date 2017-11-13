@@ -39,7 +39,12 @@
             <% end %>
           </div>
           <div class="avis">
-            <i class="fa fa-comments"></i> <span>Avis sur le conducteur</span>
+            <i class="fa fa-comments"></i>
+            <% if !@moyenneNotes.nan? %>
+              <span>Avis sur le conducteur</span>
+            <% else %>
+                <span>L'utilisateur n'a pas encore d'avis de la part de ses passagers</span>
+            <% end %>
             <div class="row">
               <% @member.trajets.each do |trajet| %>
                   <% trajet.covoiturages.each do |covoiturage| %>

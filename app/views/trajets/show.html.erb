@@ -92,11 +92,13 @@
                 </button>
               </div>
             <% end %>
+        <% elsif current_member == nil %>
+            <%= link_to "Se connecter pour réserver", new_member_session_path, :method => :get, :class => 'btn btn-primary' %>
         <% end %>
       </div>
 
       <div class="section-conducteur">
-        <% if current_member != nil && @trajet.member_id != current_member.id %>
+        <% if (current_member == nil) || (current_member != nil && @trajet.member_id != current_member.id) %>
           Trajet proposé par  <%= @member.prenom %> <%= @member.nom %>
           <%= link_to "Voir son profil", member_path(@member), target: :_blank %>
         <% else %>
