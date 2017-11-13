@@ -13,7 +13,7 @@ class MembersController < ApplicationController
       end
     end
 
-    @moyenneNotes = totalNotes / @nbTrajet;
+    @moyenneNotes = (totalNotes / @nbTrajet).round(1)
   end
 
   def preferences
