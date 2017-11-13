@@ -30,43 +30,52 @@
           <div class="presentation">
             <p><%= @member.presentation %></p>
           </div>
-        <div>
+          <div class="note">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <% if !@moyenneNotes.nan? %>
+                <span>La note moyenne de conducteur est de <%= @moyenneNotes %>/5</span>
+            <% else %>
+                <span>L'utilisateur n'a pas encore de note moyenne de conducteur</span>
+            <% end %>
+          </div>
+          <div class="avis">
+            <i class="fa fa-comments"></i> <span>Avis sur le conducteur</span>
+            <div class="row">
+              <% @member.trajets.each do |trajet| %>
+                  <% trajet.covoiturages.each do |covoiturage| %>
+                      <div class="col-lg-5 offset-lg-1 avis-elem">
+                        <div class="row">
+                          <div class="col">
+                            <p>
+                              <% if covoiturage.note == 1 %>
+                                  <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+                            <% end %>
+                              <% if covoiturage.note == 2 %>
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+                            <% end %>
+                              <% if covoiturage.note == 3 %>
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+                              <% end %>
+                              <% if covoiturage.note == 4 %>
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i>
+                              <% end %>
+                              <% if covoiturage.note == 5 %>
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                              <% end %>
 
-        <i class="fa fa-star" aria-hidden="true"></i>
-        <%= @moyenneNotes %>/5 <br>
-        <h5>Avis : </h5>
-        <% @member.trajets.each do |trajet| %>
-          <% trajet.covoiturages.each do |covoiturage| %>
-              <div class="avis-elem">
-                <div class="row">
-                  <div class="col">
-                    <b><p>
-                    <%= case covoiturage.note
-                          when 1
-                            "A éviter"
-                          when 2
-                            "Décevant"
-                          when 3
-                            "Bien"
-                          when 4
-                            "Très bien"
-                          when 5
-                            "Parfais"
-                        end
+                              <i class="avis-member"><%= link_to "#{covoiturage.member.prenom} #{covoiturage.member.nom}", member_path(covoiturage.member), target: :_blank %></i>
 
-                    %>
-                    </p></b>
-                    <p>
-                      <%= covoiturage.avis %>
-                    </p>
-                  </div>
-                </div>
-              </div>
-          <% end %>
-        <% end %>
-
+                            </p>
+                            <p>
+                              <i><%= covoiturage.avis %></i>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                  <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
-
   </div>
 </div>
