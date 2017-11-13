@@ -111,7 +111,9 @@
               </p>
           <% end %>
           <div class="actions boutons-formulaire">
-            <%= link_to "Supprimer le trajet", member_trajet_path(@member, @trajet), method: :delete, data: { confirm: "Confirmez la suppression définitive du trajet" }, :class => 'btn btn-danger' %>
+            <% if current_member != nil && @trajet.member_id == current_member.id %>
+              <%= link_to "Supprimer le trajet", member_trajet_path(@member, @trajet), method: :delete, data: { confirm: "Confirmez la suppression définitive du trajet" }, :class => 'btn btn-danger' %>
+            <% end %>
           </div>
         <% end %>
       </div>
