@@ -3,12 +3,14 @@ class MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
 
-    timeNow = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day,  DateTime.now.hour, DateTime.now.min).utc
-    @nbTrajet = @member.trajets.where("horaire_depart < ?", timeNow).count
+    @nbTrajet = 0
     totalNotes = 0.0
     @member.trajets.each do |trajet|
       trajet.covoiturages.each do |covoiturage|
-        totalNotes += covoiturage.note
+        if covoiturage.note then
+          totalNotes += covoiturage.note
+          @nbTrajet+=1
+        end
 
       end
     end
