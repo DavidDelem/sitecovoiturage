@@ -66,7 +66,14 @@
     <div class="col-sm-6">
       <div class="section-reservation">
         <h2>$<%= @trajet.prix %> CAD par voyageur</h2>
-        <% if current_member != nil && @trajet.member_id != current_member.id %>
+        <% timeNow = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day,  DateTime.now.hour, DateTime.now.min).utc %>
+        <% if @trajet.horaire_depart < timeNow && (current_member != nil && @trajet.member_id != current_member.id)%>
+            <div>
+              <button class="btn btn-secondary" disabled>
+                Réservation impossible - Date dépassée
+              </button>
+            </div>
+        <% elsif current_member != nil && @trajet.member_id != current_member.id %>
             <% if @nbPlacesRestantes > 0 %>
               <div>
                 <%= form_tag("/members/#{@member.id}/trajets/#{@trajet.id}/reservation", method: "get") do %>

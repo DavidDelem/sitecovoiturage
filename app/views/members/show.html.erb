@@ -47,6 +47,7 @@
             <div class="row">
               <% @member.trajets.each do |trajet| %>
                   <% trajet.reservations.each do |reservation| %>
+                      <% if reservation.avis != nil && reservation.note != nil %>
                       <div class="col-lg-5 offset-lg-1 avis-elem">
                         <div class="row">
                           <div class="col">
@@ -76,6 +77,7 @@
                           </div>
                         </div>
                       </div>
+                      <% end %>
                   <% end %>
               <% end %>
             </div>
