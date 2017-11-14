@@ -52,9 +52,9 @@ class ReservationController < ApplicationController
     @reservation =  Reservation.where("trajet_id = ? AND member_id = ?", params[:trajet_id], params[:member_id])
 
     if @reservation.update(reservation_avis)
-      redirect_to member_trajet_avis_path(params[:member_id], params[:trajet_id])
+      redirect_to member_trajets_path(current_member.id)
     else
-      redirect_to member_trajet_avis_path(params[:member_id], params[:trajet_id])
+      redirect_to member_trajets_path(current_member.id)
     end
   end
 
