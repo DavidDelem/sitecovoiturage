@@ -11,8 +11,8 @@ class TrajetsController < ApplicationController
       end
     end
     @trajetsPassager.each do |trajet|
-      @covoiturage = Covoiturage.where("member_id = ? AND trajet_id = ?", current_member.id, trajet.id).take
-      trajet.nb_places_reservees = @covoiturage.nb_places
+      @reservation = Reservation.where("member_id = ? AND trajet_id = ?", current_member.id, trajet.id).take
+      trajet.nb_places_reservees = @reservation.nb_places
     end
 
     # Récupération des trajets CONDUCTEUR
@@ -27,10 +27,10 @@ class TrajetsController < ApplicationController
 
     @trajetsConducteur.each do |trajet|
       nbPassagers = 0
-      @covoiturages = Covoiturage.where("trajet_id = ?", trajet.id)
+      @reservations = Reservation.where("trajet_id = ?", trajet.id)
 
-      @covoiturages.each do |covoiturage|
-        nbPassagers += covoiturage.nb_places
+      @reservations.each do |reservation|
+        nbPassagers += reservation.nb_places
       end
       trajet.nb_places_reservees = nbPassagers
     end
@@ -42,9 +42,9 @@ class TrajetsController < ApplicationController
     @member = Member.find(@trajet.member_id) # innutile, utiliser current_member
 
     nbPlacesReservees = 0
-    @covoiturages = Covoiturage.where("trajet_id = ?", @trajet.id)
-    @covoiturages.each do |covoiturage|
-      nbPlacesReservees += covoiturage.nb_places
+    @reservations = Reservation.where("trajet_id = ?", @trajet.id)
+    @reservations.each do |reservation|
+      nbPlacesReservees += reservation.nb_places
     end
 
     @nbPlacesRestantes = @trajet.nb_places_totales - nbPlacesReservees

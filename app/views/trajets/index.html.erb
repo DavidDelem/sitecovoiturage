@@ -23,11 +23,11 @@
                         <%= link_to "Annuler ma réservation", member_trajet_reservation_path(trajet.member, trajet), method: :delete, data: { confirm: "Confirmez l'annulation de votre réservation'" }, :class => 'btn btn-danger' %>
                       </div>
                     <%else%>
-                      <% @myCovoiturage = Covoiturage.where("trajet_id = ? AND member_id = ?", trajet.id, current_member) %>
+                      <% @myReservation = Reservation.where("trajet_id = ? AND member_id = ?", trajet.id, current_member) %>
                       <%
                         trajetnote = nil;
-                        @myCovoiturage.each do |covoiturage|
-                          trajetnote = covoiturage.note
+                        @myReservation.each do |reservation|
+                          trajetnote = reservation.note
                         end
                       %>
                       <% if !trajetnote %>

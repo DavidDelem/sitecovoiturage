@@ -38,9 +38,9 @@ class SearchController < ApplicationController
 
       @trajet.each do |trajet|
         nbPlacesReservees = 0
-        @covoiturages = Covoiturage.where("trajet_id = ?", trajet.id)
-        @covoiturages.each do |covoiturage|
-          nbPlacesReservees += covoiturage.nb_places
+        @reservations = Reservation.where("trajet_id = ?", trajet.id)
+        @reservations.each do |reservation|
+          nbPlacesReservees += reservation.nb_places
         end
         trajet.nb_places_restantes = trajet.nb_places_totales - nbPlacesReservees
       end

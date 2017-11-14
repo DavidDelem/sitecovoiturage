@@ -11,8 +11,8 @@ class ReservationController < ApplicationController
   end
 
   def delete
-    @covoiturage = Covoiturage.where("member_id = ? AND trajet_id = ?", current_member.id, params[:trajet_id]).take
-    @covoiturage.destroy
+    @reservation = Reservation.where("member_id = ? AND trajet_id = ?", current_member.id, params[:trajet_id]).take
+    @reservation.destroy
     redirect_to member_trajets_path(current_member.id)
   end
 
@@ -30,15 +30,15 @@ class ReservationController < ApplicationController
 
       # Contrôle du nombre de places restantes par rapport au nombre de places demandées
       nbPlacesReservees = 0
-      @covoiturages = Covoiturage.where("trajet_id = ?", @trajet.id)
-      @covoiturages.each do |covoiturage|
-        nbPlacesReservees  += covoiturage.nb_places
+      @reservations = Reservation.where("trajet_id = ?", @trajet.id)
+      @reservations.each do |reservation|
+        nbPlacesReservees  += reservation.nb_places
       end
       nbPlacesRestantes = @trajet.nb_places_totales - nbPlacesReservees;
 
       if(params[:nb_places].to_i <= nbPlacesRestantes)
-        @covoiturage = Covoiturage.create({ :trajet_id => @trajet.id, :member_id => current_member.id, :nb_places => params[:nb_places] })
-        @covoiturage.save
+        @reservation = Reservation.create({ :trajet_id => @trajet.id, :member_id => current_member.id, :nb_places => params[:nb_places] })
+        @reservation.save
       end
     end
   end
@@ -49,9 +49,9 @@ class ReservationController < ApplicationController
   end
 
   def avisupdate
-    @covoiturage =  Covoiturage.where("trajet_id = ? AND member_id = ?", params[:trajet_id], params[:member_id])
+    @reservation =  Reservation.where("trajet_id = ? AND member_id = ?", params[:trajet_id], params[:member_id])
 
-    if @covoiturage.update(reservation_avis)
+    if @reservation.update(reservation_avis)
       redirect_to member_trajet_avis_path(params[:member_id], params[:trajet_id])
     else
       redirect_to member_trajet_avis_path(params[:member_id], params[:trajet_id])

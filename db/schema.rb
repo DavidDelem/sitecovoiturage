@@ -10,21 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112190345) do
+ActiveRecord::Schema.define(version: 20171114044541) do
 
-  create_table "covoiturages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "trajet_id"
-    t.bigint "member_id"
-    t.integer "nb_places"
-    t.integer "note"
-    t.string "avis"
-    t.index ["member_id"], name: "fk_rails_e69eaccbc7"
-    t.index ["trajet_id"], name: "fk_rails_75c7ac80bd"
-  end
-
-  create_table "members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -48,12 +36,25 @@ ActiveRecord::Schema.define(version: 20171112190345) do
     t.integer "preference_animaux"
     t.integer "preference_musique"
     t.string "image"
+    t.string "ville"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "trajets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "horaire_depart", null: false
+  create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "trajet_id"
+    t.bigint "member_id"
+    t.integer "nb_places"
+    t.integer "note"
+    t.string "avis"
+    t.index ["member_id"], name: "fk_rails_e69eaccbc7"
+    t.index ["trajet_id"], name: "fk_rails_75c7ac80bd"
+  end
+
+  create_table "trajets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.datetime "horaire_depart"
     t.string "ville_depart"
     t.string "ville_destination"
     t.integer "nb_places_totales"
@@ -65,7 +66,7 @@ ActiveRecord::Schema.define(version: 20171112190345) do
     t.index ["member_id"], name: "fk_rails_e340330d09"
   end
 
-  add_foreign_key "covoiturages", "members"
-  add_foreign_key "covoiturages", "trajets"
+  add_foreign_key "reservations", "members"
+  add_foreign_key "reservations", "trajets"
   add_foreign_key "trajets", "members"
 end

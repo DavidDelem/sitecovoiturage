@@ -6,9 +6,9 @@ class MembersController < ApplicationController
     @nbTrajet = 0
     totalNotes = 0.0
     @member.trajets.each do |trajet|
-      trajet.covoiturages.each do |covoiturage|
-        if covoiturage.note then
-          totalNotes += covoiturage.note
+      trajet.reservations.each do |reservation|
+        if reservation.note then
+          totalNotes += reservation.note
           @nbTrajet+=1
         end
 

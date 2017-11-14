@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nom, :prenom, :presentation, :vehicule_type, :vehicule_annee, :preference_discussion, :preference_cigarette, :preference_animaux, :preference_musique])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nom, :prenom, :presentation, :vehicule_type, :vehicule_annee])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nom, :prenom, :presentation, :vehicule_type, :vehicule_annee, :ville, :preference_discussion, :preference_cigarette, :preference_animaux, :preference_musique])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nom, :prenom, :presentation, :vehicule_type, :vehicule_annee, :ville])
 
   end
 

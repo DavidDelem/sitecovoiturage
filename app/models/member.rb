@@ -6,6 +6,6 @@ class Member < ApplicationRecord
   # Lien member -> trajet
   has_many :trajets, dependent: :destroy
   # Lien covoiturage -> member
-  has_many :covoiturages
-  has_many :trajets_passager, through: :covoiturages, source: :trajet, dependent: :destroy
+  has_many :reservations
+  has_many :trajets_passager, through: :reservations, source: :trajet, dependent: :destroy
 end

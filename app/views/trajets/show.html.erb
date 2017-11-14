@@ -99,13 +99,13 @@
           <%= link_to "Voir son profil", member_path(@member), target: :_blank %>
         <% else %>
           <h2>Réservations</h2>
-            <% if @covoiturages.size == 0 %>
+            <% if @reservations.size == 0 %>
               <p>Aucune places réservée pour le moment</p>
             <% end %>
-          <% @covoiturages.each do |covoiturage|%>
+          <% @reservations.each do |reservation|%>
               <p>
-                <%= link_to "#{covoiturage.member.prenom} #{covoiturage.member.nom}", member_path(covoiturage.member), target: :_blank %>
-                à réservé <%= covoiturage.nb_places %> place(s)
+                <%= link_to "#{reservation.member.prenom} #{reservation.member.nom}", member_path(reservation.member), target: :_blank %>
+                à réservé <%= reservation.nb_places %> place(s)
               </p>
           <% end %>
           <div class="actions boutons-formulaire">
