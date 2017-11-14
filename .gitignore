@@ -26,4 +26,4 @@ config/database.yml
 Gemfile.lock
 .idea/
 
-app/assets/images/profil/
+app/assets/images/profil/*
