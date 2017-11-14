@@ -60,7 +60,6 @@ class ReservationController < ApplicationController
 
   def reservation_avis
     params.permit(:avis, :note)
-    redirect_to member_trajets_path(current_member.id)
   end
 
 end
