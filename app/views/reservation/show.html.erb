@@ -23,7 +23,7 @@
                   <div class="paiement-methods">
                     <i class="fa fa-cc-visa"></i> <i class="fa fa-cc-mastercard"></i> <i class="fa fa-cc-amex"></i> <i class="fa fa-cc-paypal"></i>
                   </div>
-                  <%= link_to "Annuler et retourner au trajet", :back %>
+                  <%= link_to 'Annuler et retourner au trajet', member_trajet_path(@trajet.member_id,@trajet) %>
               <% end %>
             </div>
       </div>
